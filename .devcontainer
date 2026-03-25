@@ -1,0 +1,32 @@
+{
+  "name": "GenLayer Studio (Docker + CLI)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {
+      "version": "latest",
+      "moby": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "postCreateCommand": "npm install -g genlayer && echo '✅ GenLayer CLI 已安装！现在请在终端运行：genlayer init'",
+  "forwardPorts": [8080, 4000],
+  "portsAttributes": {
+    "8080": {
+      "label": "GenLayer Studio UI",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  }
+}
